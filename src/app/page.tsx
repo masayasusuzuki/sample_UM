@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
 
 // Section Title Component
 function SectionTitle({
@@ -126,14 +127,18 @@ export default function Home() {
       {/* Philosophy Section - 理念 */}
       <section className="py-24 bg-section-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Philosophy"
-            subTitle="理念"
-            className="justify-center text-center"
-          />
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed text-center mb-16">
-            UNCOVER Marketingでは、クライアント様へ高い価値提供ができる組織であり続けるため、行動指針を定めました。
-          </p>
+          <ScrollReveal>
+            <SectionTitle
+              title="Philosophy"
+              subTitle="理念"
+              className="justify-center text-center"
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed text-center mb-16">
+              UNCOVER Marketingでは、クライアント様へ高い価値提供ができる組織であり続けるため、行動指針を定めました。
+            </p>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
@@ -161,10 +166,12 @@ export default function Home() {
                 description: "小さな信頼の積み重ねこそが大きな成果を生むと信じ、誠実に約束を果たします。",
               },
             ].map((item, i) => (
-              <div key={i} className="group border-l-2 border-[#1a1a2e]/10 pl-6 py-2 hover:border-[#1a1a2e] transition-colors">
-                <h3 className="font-medium text-[#1a1a2e] mb-3">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
-              </div>
+              <ScrollReveal key={i}>
+                <div className="group border-l-2 border-[#1a1a2e]/10 pl-6 py-2 hover:border-[#1a1a2e] transition-colors">
+                  <h3 className="font-medium text-[#1a1a2e] mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -173,21 +180,25 @@ export default function Home() {
       {/* Works Section - 実績 */}
       <section id="works" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <SectionTitle title="Works" subTitle="実績" className="mb-0" />
-            <ViewMoreLink href="/works" />
-          </div>
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-12">
+              <SectionTitle title="Works" subTitle="実績" className="mb-0" />
+              <ViewMoreLink href="/works" />
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Link href={`/works/${i}`} key={i} className="group">
-                <div className="bg-gray-100 rounded-lg aspect-[3/2]" />
-                <div className="mt-4">
-                  <p className="text-xs text-gray-500 mb-1">Web制作</p>
-                  <h3 className="font-medium group-hover:text-gray-600 transition-colors">
-                    プロジェクトタイトル {i}
-                  </h3>
-                </div>
-              </Link>
+              <ScrollReveal key={i}>
+                <Link href={`/works/${i}`} className="group block">
+                  <div className="bg-gray-100 rounded-lg aspect-[3/2]" />
+                  <div className="mt-4">
+                    <p className="text-xs text-gray-500 mb-1">Web制作</p>
+                    <h3 className="font-medium group-hover:text-gray-600 transition-colors">
+                      プロジェクトタイトル {i}
+                    </h3>
+                  </div>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -196,81 +207,93 @@ export default function Home() {
       {/* Blog Section - ブログ */}
       <section className="py-24 bg-section-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <SectionTitle title="Blog" subTitle="ブログ" className="mb-0" />
-            <ViewMoreLink href="/blog" />
-          </div>
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-12">
+              <SectionTitle title="Blog" subTitle="ブログ" className="mb-0" />
+              <ViewMoreLink href="/blog" />
+            </div>
+          </ScrollReveal>
           <div className="space-y-8">
             {[
               { category: "マーケティング", date: "2025-01-15", title: "SNSマーケティングの最新トレンドと効果的な活用法", tag: "SNS運用" },
               { category: "Web制作ノウハウ", date: "2025-01-10", title: "コーポレートサイトリニューアルで押さえるべきポイント", tag: "Web制作" },
               { category: "広告運用", date: "2025-01-05", title: "リスティング広告の費用対効果を最大化する運用術", tag: "Web広告" },
             ].map((post, i) => (
-              <Link
-                href={`/blog/${i + 1}`}
-                key={i}
-                className="group flex gap-8 items-start"
-              >
-                <div className="w-[400px] flex-shrink-0 bg-gray-200 aspect-[16/10] rounded-lg" />
-                <div className="flex-1 py-2">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm text-gray-600">{post.category}</span>
-                    <span className="text-sm text-gray-400">{post.date}</span>
+              <ScrollReveal key={i}>
+                <Link
+                  href={`/blog/${i + 1}`}
+                  className="group flex gap-8 items-start"
+                >
+                  <div className="w-[400px] flex-shrink-0 bg-gray-200 aspect-[16/10] rounded-lg" />
+                  <div className="flex-1 py-2">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-600">{post.category}</span>
+                      <span className="text-sm text-gray-400">{post.date}</span>
+                    </div>
+                    <h3 className="text-xl font-medium text-[#1a1a2e] group-hover:text-gray-600 transition-colors mb-4 leading-relaxed">
+                      {post.title}
+                    </h3>
+                    <span className="inline-block text-sm text-gray-500 border border-gray-300 rounded-full px-4 py-1">
+                      {post.tag}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-medium text-[#1a1a2e] group-hover:text-gray-600 transition-colors mb-4 leading-relaxed">
-                    {post.title}
-                  </h3>
-                  <span className="inline-block text-sm text-gray-500 border border-gray-300 rounded-full px-4 py-1">
-                    {post.tag}
-                  </span>
-                </div>
-              </Link>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/blog"
-              className="inline-block border border-gray-300 text-[#1a1a2e] px-8 py-3 rounded hover:bg-[#1a1a2e] hover:text-white hover:border-[#1a1a2e] transition-colors"
-            >
-              一覧を見る
-            </Link>
-          </div>
+          <ScrollReveal>
+            <div className="mt-12 text-center">
+              <Link
+                href="/blog"
+                className="inline-block border border-gray-300 text-[#1a1a2e] px-8 py-3 rounded hover:bg-[#1a1a2e] hover:text-white hover:border-[#1a1a2e] transition-colors"
+              >
+                一覧を見る
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Service Section - サービス */}
       <section className="py-24 bg-[#1a1a2e] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Service"
-            subTitle="サービス"
-            className="text-white [&>span]:text-gray-400"
-          />
-          <p className="text-gray-400 mb-12 max-w-2xl">
-            マーケティングからクリエイティブ制作まで、
-            お客様のビジネス成長をワンストップでサポートします。
-          </p>
+          <ScrollReveal>
+            <SectionTitle
+              title="Service"
+              subTitle="サービス"
+              className="text-white [&>span]:text-gray-400"
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <p className="text-gray-400 mb-12 max-w-2xl">
+              マーケティングからクリエイティブ制作まで、
+              お客様のビジネス成長をワンストップでサポートします。
+            </p>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <Link
-                href={`/service/${service.slug}`}
-                key={service.slug}
-                className="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors"
-              >
-                <div className="w-12 h-12 bg-white/20 rounded-lg mb-4" />
-                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
-                <p className="text-sm text-gray-400">{service.description}</p>
-              </Link>
+            {services.map((service, i) => (
+              <ScrollReveal key={service.slug}>
+                <Link
+                  href={`/service/${service.slug}`}
+                  className="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors block"
+                >
+                  <div className="w-12 h-12 bg-white/20 rounded-lg mb-4" />
+                  <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                  <p className="text-sm text-gray-400">{service.description}</p>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/service"
-              className="inline-block border border-white/30 text-white px-8 py-3 rounded hover:bg-white hover:text-[#1a1a2e] transition-colors"
-            >
-              サービス一覧を見る
-            </Link>
-          </div>
+          <ScrollReveal>
+            <div className="mt-12 text-center">
+              <Link
+                href="/service"
+                className="inline-block border border-white/30 text-white px-8 py-3 rounded hover:bg-white hover:text-[#1a1a2e] transition-colors"
+              >
+                サービス一覧を見る
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -278,27 +301,31 @@ export default function Home() {
       <section id="recruit" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <SectionTitle title="Recruit" subTitle="採用情報" />
-              <p className="text-3xl md:text-4xl font-bold leading-relaxed mb-6">
-                一緒に未来を
-                <br />
-                つくりませんか。
-              </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                私たちは、常に新しいチャレンジを恐れず、
-                クライアントと共に成長できる仲間を探しています。
-                あなたの力を貸してください。
-              </p>
-              <Link href="/recruit" className="btn-primary">
-                採用情報を見る
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="bg-gray-100 rounded-lg aspect-square" />
-              ))}
-            </div>
+            <ScrollReveal>
+              <div>
+                <SectionTitle title="Recruit" subTitle="採用情報" />
+                <p className="text-3xl md:text-4xl font-bold leading-relaxed mb-6">
+                  一緒に未来を
+                  <br />
+                  つくりませんか。
+                </p>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  私たちは、常に新しいチャレンジを恐れず、
+                  クライアントと共に成長できる仲間を探しています。
+                  あなたの力を貸してください。
+                </p>
+                <Link href="/recruit" className="btn-primary">
+                  採用情報を見る
+                </Link>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal>
+              <div className="grid grid-cols-2 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="bg-gray-100 rounded-lg aspect-square" />
+                ))}
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -306,38 +333,44 @@ export default function Home() {
       {/* Message Section - 代表メッセージ */}
       <section className="py-24 bg-section-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Message"
-            subTitle="代表メッセージ"
-            className="text-center justify-center"
-          />
+          <ScrollReveal>
+            <SectionTitle
+              title="Message"
+              subTitle="代表メッセージ"
+              className="text-center justify-center"
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-200 aspect-[4/5] rounded-lg max-w-md mx-auto lg:mx-0" />
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-[#1a1a2e] mb-8 leading-relaxed">
-                圧倒的な成果でお応えする。
-              </p>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  はじめまして。UNCOVER Marketing株式会社 代表取締役の肥田です。
+            <ScrollReveal>
+              <div className="bg-gray-200 aspect-[4/5] rounded-lg max-w-md mx-auto lg:mx-0" />
+            </ScrollReveal>
+            <ScrollReveal>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold text-[#1a1a2e] mb-8 leading-relaxed">
+                  圧倒的な成果でお応えする。
                 </p>
-                <p>
-                  今や、SNSやインターネットは、企業活動における"空気"のような存在。
-                  あって当たり前、でも使いこなせるかどうかで、ビジネスの成否は大きく変わります。
-                </p>
-                <p>
-                  事実、SNSを味方につけている企業は、売上・採用・ブランディングにおいて明らかな成果を手にしています。一方で、そうでない企業との差は広がる一方です。
-                </p>
-                <p>
-                  UNCOVER Marketingは、SNSマーケティングのプロフェッショナル集団としてクライアント様の本質的な課題を見極め、
-                  可能性を最大限に引き出すことをお約束をいたします。
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p>
+                    はじめまして。UNCOVER Marketing株式会社 代表取締役の肥田です。
+                  </p>
+                  <p>
+                    今や、SNSやインターネットは、企業活動における"空気"のような存在。
+                    あって当たり前、でも使いこなせるかどうかで、ビジネスの成否は大きく変わります。
+                  </p>
+                  <p>
+                    事実、SNSを味方につけている企業は、売上・採用・ブランディングにおいて明らかな成果を手にしています。一方で、そうでない企業との差は広がる一方です。
+                  </p>
+                  <p>
+                    UNCOVER Marketingは、SNSマーケティングのプロフェッショナル集団としてクライアント様の本質的な課題を見極め、
+                    可能性を最大限に引き出すことをお約束をいたします。
+                  </p>
+                </div>
+                <p className="mt-8 text-right text-[#1a1a2e] font-medium">
+                  UNCOVER Marketing株式会社<br />
+                  代表取締役　肥田
                 </p>
               </div>
-              <p className="mt-8 text-right text-[#1a1a2e] font-medium">
-                UNCOVER Marketing株式会社<br />
-                代表取締役　肥田
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -345,18 +378,22 @@ export default function Home() {
       {/* Member Section - 働くメンバー */}
       <section className="py-24 bg-section-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Member"
-            subTitle="働くメンバー"
-            className="text-center justify-center"
-          />
+          <ScrollReveal>
+            <SectionTitle
+              title="Member"
+              subTitle="働くメンバー"
+              className="text-center justify-center"
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {members.map((member, i) => (
-              <div key={i} className="text-center">
-                <div className="bg-gray-200 rounded-full aspect-square mb-4 mx-auto max-w-[200px]" />
-                <h3 className="font-semibold">{member.name}</h3>
-                <p className="text-sm text-gray-500">{member.role}</p>
-              </div>
+              <ScrollReveal key={i}>
+                <div className="text-center">
+                  <div className="bg-gray-200 rounded-full aspect-square mb-4 mx-auto max-w-[200px]" />
+                  <h3 className="font-semibold">{member.name}</h3>
+                  <p className="text-sm text-gray-500">{member.role}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -365,7 +402,9 @@ export default function Home() {
       {/* Company Section - 会社情報 */}
       <section id="company" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title="Company" subTitle="会社情報" />
+          <ScrollReveal>
+            <SectionTitle title="Company" subTitle="会社情報" />
+          </ScrollReveal>
           <dl className="space-y-0">
             {[
               { label: "会社名", value: "UNCOVER Marketing株式会社" },
@@ -381,14 +420,13 @@ export default function Home() {
               { label: "税務顧問", value: "税理士法人Five Starパートナーズ" },
               { label: "顧問弁護士", value: "堂島総合法律事務所 三木章広" },
               { label: "顧問社労士", value: "社会保険労務士法人 Five Starパートナーズ" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-gray-200 py-5"
-              >
-                <dt className="text-sm text-gray-500 mb-2 md:mb-0">{item.label}</dt>
-                <dd className="text-[#1a1a2e] whitespace-pre-line">{item.value}</dd>
-              </div>
+            ].map((item, i) => (
+              <ScrollReveal key={item.label}>
+                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-gray-200 py-5">
+                  <dt className="text-sm text-gray-500 mb-2 md:mb-0">{item.label}</dt>
+                  <dd className="text-[#1a1a2e] whitespace-pre-line">{item.value}</dd>
+                </div>
+              </ScrollReveal>
             ))}
           </dl>
         </div>
@@ -397,66 +435,72 @@ export default function Home() {
       {/* Contact Form Section - お問い合わせフォーム */}
       <section className="py-24 bg-[#1a1a2e] text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Contact"
-            subTitle="お問い合わせ"
-            className="text-center justify-center [&>span]:text-gray-400"
-          />
-          <p className="text-gray-400 mb-12 text-center">
-            お仕事のご依頼やご相談など、お気軽にお問い合わせください。
-          </p>
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ScrollReveal>
+            <SectionTitle
+              title="Contact"
+              subTitle="お問い合わせ"
+              className="text-center justify-center [&>span]:text-gray-400"
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <p className="text-gray-400 mb-12 text-center">
+              お仕事のご依頼やご相談など、お気軽にお問い合わせください。
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm mb-2">
+                    会社名 <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50"
+                    placeholder="株式会社○○"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-2">
+                    お名前 <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50"
+                    placeholder="山田 太郎"
+                  />
+                </div>
+              </div>
               <div>
                 <label className="block text-sm mb-2">
-                  会社名 <span className="text-red-400">*</span>
+                  メールアドレス <span className="text-red-400">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50"
-                  placeholder="株式会社○○"
+                  placeholder="example@company.com"
                 />
               </div>
               <div>
                 <label className="block text-sm mb-2">
-                  お名前 <span className="text-red-400">*</span>
+                  お問い合わせ内容 <span className="text-red-400">*</span>
                 </label>
-                <input
-                  type="text"
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50"
-                  placeholder="山田 太郎"
+                <textarea
+                  rows={5}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50 resize-none"
+                  placeholder="お問い合わせ内容をご記入ください"
                 />
               </div>
-            </div>
-            <div>
-              <label className="block text-sm mb-2">
-                メールアドレス <span className="text-red-400">*</span>
-              </label>
-              <input
-                type="email"
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50"
-                placeholder="example@company.com"
-              />
-            </div>
-            <div>
-              <label className="block text-sm mb-2">
-                お問い合わせ内容 <span className="text-red-400">*</span>
-              </label>
-              <textarea
-                rows={5}
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-white/50 resize-none"
-                placeholder="お問い合わせ内容をご記入ください"
-              />
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-white text-[#1a1a2e] px-12 py-4 rounded font-medium hover:bg-gray-100 transition-colors"
-              >
-                送信する
-              </button>
-            </div>
-          </form>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="bg-white text-[#1a1a2e] px-12 py-4 rounded font-medium hover:bg-gray-100 transition-colors"
+                >
+                  送信する
+                </button>
+              </div>
+            </form>
+          </ScrollReveal>
         </div>
       </section>
     </>
