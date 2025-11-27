@@ -7,102 +7,102 @@ export default function FloatingButtons() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      <div
-        className={`bg-[#1a1a2e] rounded-3xl shadow-lg overflow-hidden transition-all duration-300 ease-out ${
-          isOpen ? "w-72" : "w-auto"
-        }`}
-      >
-        {/* Expanded menu */}
+    <div className="fixed bottom-8 right-8 z-50">
+      {/* Backdrop */}
+      {isOpen && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-out ${
-            isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="p-4 pb-2 space-y-2">
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Menu Container */}
+      <div className="relative">
+        {/* Expanded Menu */}
+        {isOpen && (
+          <div className="absolute bottom-[72px] right-0 bg-white rounded-2xl shadow-2xl overflow-hidden min-w-[300px]">
             <Link
               href="/downloads"
-              className="flex items-center gap-3 text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-white/10 transition-colors"
+              className="flex items-center gap-4 px-6 py-5 border-b border-gray-100 hover:bg-gray-50"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
+              <div className="w-10 h-10 bg-[#1a1a2e] rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="font-medium text-[#1a1a2e]">資料ダウンロード</p>
+                <p className="text-xs text-gray-400 mt-0.5">サービス資料をご覧いただけます</p>
+              </div>
+              <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              <span className="font-medium">資料ダウンロード</span>
             </Link>
+
             <Link
               href="/contact"
-              className="flex items-center gap-3 text-white/80 hover:text-white py-3 px-4 rounded-xl hover:bg-white/10 transition-colors"
+              className="flex items-center gap-4 px-6 py-5 hover:bg-gray-50"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
+              <div className="w-10 h-10 bg-[#1a1a2e] rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="font-medium text-[#1a1a2e]">お問い合わせ</p>
+                <p className="text-xs text-gray-400 mt-0.5">お気軽にご相談ください</p>
+              </div>
+              <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              <span className="font-medium">お問い合わせ</span>
             </Link>
           </div>
-          <div className="border-t border-white/10 mx-4" />
-        </div>
+        )}
 
-        {/* Main toggle button */}
+        {/* Main Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full text-white px-6 py-5 flex items-center gap-3 text-base font-medium transition-colors"
+          className={`flex items-center gap-3 px-7 py-4 rounded-full shadow-2xl font-medium ${
+            isOpen
+              ? "bg-[#1a1a2e] text-white"
+              : "bg-[#1a1a2e] text-white"
+          }`}
         >
-          <div
-            className={`transition-transform duration-300 ${
-              isOpen ? "rotate-45" : "rotate-0"
-            }`}
-          >
-            {isOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+          {isOpen ? (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+              <span>閉じる</span>
+            </>
+          ) : (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-            )}
-          </div>
-          <span>{isOpen ? "閉じる" : "ご質問はこちら"}</span>
+              <span>ご相談・お問い合わせ</span>
+            </>
+          )}
         </button>
       </div>
     </div>

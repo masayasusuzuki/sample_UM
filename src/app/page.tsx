@@ -63,43 +63,45 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex items-center"
-        style={{
-          backgroundImage: 'url(/hero.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Image with fade */}
+        <div
+          className="absolute inset-0 animate-fade-in"
+          style={{
+            backgroundImage: 'url(/hero.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-white/30" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
           <div className="max-w-3xl">
-            <div className="mb-8">
+            <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <span className="inline-block text-xs tracking-[0.3em] text-[#1a1a2e]/60 uppercase mb-8">
                 Marketing Agency
               </span>
             </div>
 
-            <h1 className="text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-black leading-none tracking-[-0.04em] text-[#1a1a2e] mb-8">
+            <h1 className="text-[4.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-black leading-none tracking-[-0.04em] text-[#1a1a2e] mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               Crush it.
             </h1>
 
-            <div className="flex items-center gap-6 mb-12">
+            <div className="flex items-center gap-6 mb-12 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
               <div className="w-20 h-px bg-[#1a1a2e]/30" />
               <p className="text-2xl md:text-3xl lg:text-4xl text-[#1a1a2e]/80 font-light tracking-wide">
                 圧倒的な成果でお応えする。
               </p>
             </div>
 
-            <p className="text-base text-[#1a1a2e]/60 leading-relaxed max-w-lg mb-12 font-light">
+            <p className="text-base text-[#1a1a2e]/60 leading-relaxed max-w-lg mb-12 font-light animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               企業の内部課題、顧客の本音、ブランドの未発掘な価値を
               <span className="text-[#1a1a2e] font-medium">「UNCOVER」</span>し、
               本質に基づくマーケティング戦略へと変換します。
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
               <Link
                 href="/service"
                 className="group inline-flex items-center gap-3 bg-[#1a1a2e] text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-[#1a1a2e]/90 transition-colors"
@@ -117,7 +119,7 @@ export default function Home() {
           </div>
 
           {/* Bottom scroll indicator */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-fade-in" style={{ animationDelay: '1.5s' }}>
             <span className="text-[10px] tracking-[0.2em] text-[#1a1a2e]/40 uppercase">Scroll</span>
             <div className="w-px h-12 bg-gradient-to-b from-[#1a1a2e]/30 to-transparent" />
           </div>
