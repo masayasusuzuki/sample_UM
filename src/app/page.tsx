@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
+import MemberSection from "@/components/MemberSection";
 
 // Section Title Component
 function SectionTitle({
@@ -53,12 +54,6 @@ export default function Home() {
     },
   ];
 
-  const members = [
-    { name: "山田 太郎", role: "代表取締役" },
-    { name: "佐藤 花子", role: "クリエイティブディレクター" },
-    { name: "鈴木 一郎", role: "テクニカルリード" },
-    { name: "田中 美咲", role: "マーケティングマネージャー" },
-  ];
 
   return (
     <>
@@ -378,28 +373,7 @@ export default function Home() {
       </section>
 
       {/* Member Section - 働くメンバー */}
-      <section className="py-24 bg-section-gray">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionTitle
-              title="Member"
-              subTitle="働くメンバー"
-              className="text-center justify-center"
-            />
-          </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {members.map((member, i) => (
-              <ScrollReveal key={i}>
-                <div className="text-center">
-                  <div className="bg-gray-200 rounded-full aspect-square mb-4 mx-auto max-w-[200px]" />
-                  <h3 className="font-semibold">{member.name}</h3>
-                  <p className="text-sm text-gray-500">{member.role}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MemberSection />
 
       {/* Company Section - 会社情報 */}
       <section id="company" className="py-24">
@@ -422,7 +396,7 @@ export default function Home() {
               { label: "税務顧問", value: "税理士法人Five Starパートナーズ" },
               { label: "顧問弁護士", value: "堂島総合法律事務所 三木章広" },
               { label: "顧問社労士", value: "社会保険労務士法人 Five Starパートナーズ" },
-            ].map((item, i) => (
+            ].map((item) => (
               <ScrollReveal key={item.label}>
                 <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-gray-200 py-5">
                   <dt className="text-sm text-gray-500 mb-2 md:mb-0">{item.label}</dt>
